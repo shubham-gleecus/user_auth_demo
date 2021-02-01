@@ -23,7 +23,7 @@ module UserRoleConcern
   end
 
   # user can access admin panel who has role admin|super_admin
-  def can_access_admin_panel?
+  def can_access_supervisor_listing?
     supervisor? || super_admin?
   end
 

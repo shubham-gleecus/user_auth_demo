@@ -1,0 +1,53 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+        %h1
+          = @supervisor.full_name
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item
+            %a{:href => "/supervisors"} Supervisor Users
+          %li.breadcrumb-item.active
+            = params[:id]
+%section.content
+  .container-fluid
+    .card
+      .card-header
+        %h3.card-title
+          = "#{@supervisor.full_name} Details"
+      .card-body
+        .row
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Name
+              %dd
+                = @supervisor.full_name || '--'
+              %br
+              %dt Member Since
+              %dd
+                = time_stamp_at(@supervisor.created_at) || '--'
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Email
+              %dd
+                = @supervisor.email || '--'
+              %br
+        %hr
+        .row
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Created At
+              %dd
+                = time_stamp_at(@supervisor.created_at, :tmstp_at) || '--'
+              %br
+
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Updated At
+              %dd
+                = time_stamp_at(@supervisor.updated_at, :tmstp_at) || '--'
+              %br
+

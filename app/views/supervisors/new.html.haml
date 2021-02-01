@@ -1,0 +1,36 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+        %h1 New Supervisor
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item
+            %a{:href => "/supervisors"} Supervisor Users
+          %li.breadcrumb-item.active
+            New Supervisor
+%section.content
+  .container-fluid
+    .row
+      .col-md-8
+        .card.card-primary
+          .card-header
+            %h3.card-title New Supervisor User
+          = form_with scope: :user, url: supervisors_path, method: :post, class: 'admin-form remote-form' do |f|
+            .card-body
+              .form-group
+                %label Name
+                %span.text-red *
+                =f.text_field :full_name, placeholder: 'Name', class: 'form-control', value: @supervisor.full_name
+              .form-group
+                %label Email
+                %span.text-red *
+                =f.text_field :email, placeholder: 'Email', class: 'form-control', type: 'email', value: @supervisor.email
+                = f.hidden_field :supervisor_role, value: true
+                = f.hidden_field :password, value: "123456"
+            .card-footer
+              = f.button 'Submit', class: 'btn btn-info',
+                          data: { disable_with: "<i class='fas fa-spinner fa-spin'></i> Submiting..."}
+              = link_to 'Cancel', supervisors_path, class: 'btn btn-default'

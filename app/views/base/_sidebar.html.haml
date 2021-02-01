@@ -30,7 +30,12 @@
                 %i.fas.fa-building
                 %p
                   Admin Users
-
+          - if current_user.superadmin_role? || current_user.supervisor_role?
+            %li.nav-item
+              %a.nav-link{href: supervisors_path, class: is_active_link?(supervisors_path, :inclusive) ? 'active' : ''}
+                %i.fas.fa-building
+                %p
+                  Supervisor Users
 
           -#%li.nav-item.has-treeview
           -#  %a.nav-link{href: "/discussions", class: active_class('/discussions')}

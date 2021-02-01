@@ -38,6 +38,8 @@ gem 'sidekiq-failures'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'redis-rails' # to store session data into Redis
+# This gem allows you to use SweetAlert or SweetAlert2 for your flash messages.
+gem 'sweetify'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

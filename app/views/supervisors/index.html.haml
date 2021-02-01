@@ -1,0 +1,51 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+      -#  %h1 Supervisor Users
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item.active Supervisor Users
+%section.content
+  .container-fluid
+    -#.create-section.mb-2
+    -#  = link_to 'New Supervisor', new_supervisor_path, class: 'btn btn-primary'
+    .card
+      .card-header
+        %h3.card-title Supervisor Users
+        .card-tools
+          - if current_user.superadmin_role?
+            = link_to new_supervisor_path,
+                         'data-toggle': 'tooltip', 'data-placement': 'top', class: 'btn btn-sm btn-info' do
+              %i.fas.fa-plus-circle
+              New Supervisor
+      / /.card-header
+      .card-body.p-0
+        %table#supervisors-table.table.table-striped
+          %thead
+            %tr
+              %th Name
+              %th Email
+
+              -#%th{:style => "width: 40px"} Phone Number
+              %th.actions Action
+          %tbody
+            - unless @error_response
+              -if @supervisors.empty?
+                %tr
+                  %td{colspan: 6} No Supervisor found
+              - else
+                - @supervisors.each do |supervisor|
+                  %tr
+                    %td
+                      = link_to supervisor.full_name, supervisor_path(supervisor.id)
+                    %td
+                      = supervisor.email
+                    %td.actions
+                      = link_to supervisor_path(supervisor.id), title: 'Show' do
+                        %i.far.fa-eye
+                      - unless current_user.eql? supervisor
+                        = link_to supervisor_path(supervisor.id), method: :delete, remote:true, class: 'remote-form',  title: 'Delete' do
+                          %i.far.fa-trash-alt
