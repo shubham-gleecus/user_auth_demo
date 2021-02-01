@@ -30,4 +30,20 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d/%b"
+      long: "%d/%m/%Y %H:%M"
+      since_short: '%B. %Y'
+      since: '%d %B. %Y'
+  time:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d/%b"
+      long: "%d/%m/%Y %H:%M"
+      since_at: '%b %e, %l:%M %p'
+      tmstp_at: '%b %e %Y, %l:%M %p'
+      since_short: '%B. %Y'
+      since: '%d %B. %Y'
+      time: '%H:%M'

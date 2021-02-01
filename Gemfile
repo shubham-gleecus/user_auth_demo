@@ -21,6 +21,12 @@ gem 'devise'
 gem 'haml-rails'
 gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
+gem 'active_link_to'
+# ==> Background Jobs
+gem 'sidekiq' # as of now 6.0.7
+# Keeps track of Sidekiq failed jobs and adds a tab to the Web UI to let you browse them.
+gem 'sidekiq-failures'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -31,6 +37,7 @@ gem 'cancancan'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'redis-rails' # to store session data into Redis
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

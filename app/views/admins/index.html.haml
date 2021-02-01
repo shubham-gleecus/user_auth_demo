@@ -1,0 +1,50 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+      -#  %h1 Admin Users
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item.active Admin Users
+%section.content
+  .container-fluid
+    -#.create-section.mb-2
+    -#  = link_to 'New Admin', new_admin_path, class: 'btn btn-primary'
+    .card
+      .card-header
+        %h3.card-title Admin Users
+        .card-tools
+          = link_to new_admin_path,
+                       'data-toggle': 'tooltip', 'data-placement': 'top', class: 'btn btn-sm btn-info' do
+            %i.fas.fa-plus-circle
+            New Admin
+      / /.card-header
+      .card-body.p-0
+        %table#admins-table.table.table-striped
+          %thead
+            %tr
+              %th Name
+              %th Email
+
+              -#%th{:style => "width: 40px"} Phone Number
+              %th.actions Action
+          %tbody
+            - unless @error_response
+              -if @admins.empty?
+                %tr
+                  %td{colspan: 6} No Admin found
+              - else
+                - @admins.each do |admin|
+                  %tr
+                    %td
+                      = link_to admin.full_name, admin_path(admin.id)
+                    %td
+                      = admin.email
+                    %td.actions
+                      = link_to admin_path(admin.id), title: 'Show' do
+                        %i.far.fa-eye
+                      - unless current_user.eql? admin
+                        = link_to admin_path(admin.id), method: :delete, remote:true, class: 'remote-form',  title: 'Delete' do
+                          %i.far.fa-trash-alt

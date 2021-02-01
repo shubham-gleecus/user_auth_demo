@@ -1,0 +1,53 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+        %h1
+          = @admin.full_name
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item
+            %a{:href => "/admins"} Admin Users
+          %li.breadcrumb-item.active
+            = params[:id]
+%section.content
+  .container-fluid
+    .card
+      .card-header
+        %h3.card-title
+          = "#{@admin.full_name} Details"
+      .card-body
+        .row
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Name
+              %dd
+                = @admin.full_name || '--'
+              %br
+              %dt Member Since
+              %dd
+                = time_stamp_at(@admin.created_at) || '--'
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Email
+              %dd
+                = @admin.email || '--'
+              %br
+        %hr
+        .row
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Created At
+              %dd
+                = time_stamp_at(@admin.created_at, :tmstp_at) || '--'
+              %br
+
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Updated At
+              %dd
+                = time_stamp_at(@admin.updated_at, :tmstp_at) || '--'
+              %br
+

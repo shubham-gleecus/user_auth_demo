@@ -12,15 +12,6 @@
       = render "base/header"
       = render "base/sidebar"
       .content-wrapper
-        %section.content-header
-          %h1
-            AdminLte
-          %ol.breadcrumb
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-dashboard
-                Level
-            %li.active Here
         %section.content.container-fluid
           = yield
           = toastr_flash

@@ -1,3 +1,16 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+        %h1 Dashboard
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item.active Dashboard
+    .row.mb-2
+      %h3
+        Dashboard content
 .container
   - if current_user.superadmin_role? || current_user.supervisor_role?
     %h3 Visible only for superadmins and supervisors!

@@ -20,10 +20,16 @@
             Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library
           %li.nav-item.has-treeview
-            %a.nav-link{href: "/dashboard", class: active_class('/dashboard')}
+            %a.nav-link{href: "/", class: active_class('/')}
               %i.nav-icon.fas.fa-tachometer-alt
               %p
                 Dashboard
+          - if current_user.superadmin_role?
+            %li.nav-item
+              %a.nav-link{href: admins_path, class: is_active_link?(admins_path, :inclusive) ? 'active' : ''}
+                %i.fas.fa-building
+                %p
+                  Admin Users
 
 
           -#%li.nav-item.has-treeview
