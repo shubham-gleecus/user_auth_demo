@@ -7,4 +7,8 @@ module ApplicationHelper
       flash_messages << text.html_safe if message
     end.join("\n").html_safe
   end
+
+  def active_class(link_path)
+    current_page?(link_path) ? 'active' : ''
+  end
 end

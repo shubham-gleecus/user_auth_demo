@@ -1,0 +1,56 @@
+- if current_user
+  %aside.main-sidebar.sidebar-light-info.elevation-4
+    / Brand Logo
+    %a.brand-link.navbar-info{href: "/"}
+      %img.brand-image.img-circle.elevation-3{ alt: "StuzeeAdmin",
+                                               style: "opacity: .8" }
+        %span.brand-text.font-weight-light User Auth
+      / Sidebar
+    .sidebar
+      / Sidebar user (optional)
+      .user-panel.mt-3.pb-3.mb-3.d-flex
+        .image
+          -#%img.img-circle.elevation-2{ alt:  "User Image", src: user_avatar(current_user)}
+        .info
+          %a.d-block{:href => "/my-profile"} #{current_user['name']}
+      / Sidebar Menu
+      %nav.mt-2
+        %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion": "false", "data-widget": "treeview", role: "menu"}
+          /
+            Add icons to the links using the .nav-icon class
+            with font-awesome or any other icon font library
+          %li.nav-item.has-treeview
+            %a.nav-link{href: "/dashboard", class: active_class('/dashboard')}
+              %i.nav-icon.fas.fa-tachometer-alt
+              %p
+                Dashboard
+
+
+          -#%li.nav-item.has-treeview
+          -#  %a.nav-link{href: "/discussions", class: active_class('/discussions')}
+          -#    %i.nav-icon.fas.fa-comments
+          -#    %p
+          -#      Discussions
+          -#%li.nav-item.has-treeview
+          -#  %a.nav-link{:href => "#"}
+          -#    %i.nav-icon.fas.fa-users
+          -#    %p
+          -#      Users
+          -#      %i.fas.fa-angle-left.right
+          -#  %ul.nav.nav-treeview
+          -#    %li.nav-item
+          -#      %a.nav-link{:href => "#"}
+          -#        %i.fas.fa-user-graduate.nav-icon
+          -#        %p Students
+          -#    %li.nav-item
+          -#      %a.nav-link{:href => "#"}
+          -#        %i.fas.fa-user-tie.nav-icon
+          -#        %p Consultants
+          -#%li.nav-item.has-treeview
+          -#  %a.nav-link{href: "/events", class: active_class('/events')}
+          -#    %i.nav-icon.fas.fa-calendar-alt
+          -#    %p Events
+          -#%li.nav-item.has-treeview
+          -#  %a.nav-link{href: "/videos", class: active_class('/videos')}
+          -#    %i.nav-icon.fas.fa-video
+          -#    %p Videos

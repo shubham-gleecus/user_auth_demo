@@ -6,6 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :full_name, null: false, default: ""
 
       ## Recoverable
       t.string   :reset_password_token
@@ -43,6 +44,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     # Initialize first account:
     User.create! do |u|
       u.email     = 'sam@auth.com'
+      u.full_name = 'Sam'
       u.password    = '123456'
     end
   end

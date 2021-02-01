@@ -1,0 +1,21 @@
+%nav.main-header.navbar.navbar-expand.navbar-cyan.navbar-dark
+  / Left navbar links
+  %ul.navbar-nav
+    %li.nav-item
+      %a.nav-link{"data-widget" => "pushmenu", :href => "#"}
+
+  -#  %li.nav-item.d-none.d-sm-inline-block
+  -#    %a.nav-link{:href => "../../index3.html"} Home
+  -#  %li.nav-item.d-none.d-sm-inline-block
+  -#    %a.nav-link{:href => "#"} Contact
+  -#/ SEARCH FORM
+  -#%form.form-inline.ml-3
+  -#  .input-group.input-group-sm
+  -#    %input.form-control.form-control-navbar{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+  -#    .input-group-append
+  -#      %button.btn.btn-navbar{:type => "submit"}
+  -#        %i.fas.fa-search
+  / Right navbar links
+  %ul.navbar-nav.ml-auto
+    %li.nav-item
+      =link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-block btn-sm btn-warning lgout-btn'

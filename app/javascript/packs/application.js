@@ -14,6 +14,15 @@ let jQuery = require("jquery");
 // import jQuery from "jquery";
 global.$ = jQuery;
 
+document.addEventListener("turbolinks:load", () => {
+    $('[data-toggle="tooltip"]').tooltip()
+});
+
+require('admin-lte');
+import "admin-lte/dist/css/AdminLTE.css";
+import "admin-lte/dist/css/skins/_all-skins.css";
+import "@fortawesome/fontawesome-free/js/all";
+
 
 import "../stylesheets/application"
 
