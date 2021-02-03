@@ -19,6 +19,9 @@ document.addEventListener("turbolinks:load", () => {
 });
 
 require('admin-lte');
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+window.Swal = Swal;
 import "admin-lte/dist/css/AdminLTE.css";
 import "admin-lte/dist/css/skins/_all-skins.css";
 import "@fortawesome/fontawesome-free/js/all";

@@ -12,8 +12,9 @@ class Ability
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :manage, :dashboard         # allow access to dashboard
     end
-    if user.supervisor_role?
+    if user.supervisor_role? || user.admin_role?
       can :manage, User
+      can :access, :rails_admin
     end
     #
     # The first argument to `can` is the action you are giving the user

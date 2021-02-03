@@ -34,6 +34,14 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def ensure_super_admin_listing_access
+    return if current_user.can_access_super_admin_listing?
+
+    # flash[:error] = I18n.t('unauthorized')
+    sweetalert_flash('error', I18n.t('unauthorized'), 'Unauthorized', timer: 25_000)
+    redirect_to root_path
+  end
+
   def ensure_supervisor_listing_access
     return if current_user.can_access_supervisor_listing?
 

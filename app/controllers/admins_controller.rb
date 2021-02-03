@@ -15,7 +15,9 @@ class AdminsController < ApplicationController
   # POST /admins
   def create
     @admin = User.new(admin_params)
+    @admin.password = Devise.friendly_token.first(8)
     if @admin.save
+      @admin.email_temp_password
       flash[:success] = 'Admin created successfully'
       redirect_to admins_path
     end
@@ -37,6 +39,6 @@ class AdminsController < ApplicationController
   private
 
   def admin_params
-    params.require(:user).permit(:full_name, :email, :password, :superadmin_role)
+    params.require(:user).permit(:full_name, :email, :password, :admin_role)
   end
 end

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   # require 'sidekiq/web'
   # mount Sidekiq::Web => '/sidekiq'
   # # TODO: enable below for once app is ready for production
@@ -12,6 +15,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   get '/', to: 'home#index', as: :home
   resources :admins
+  resources :super_admins
   resources :supervisors
-  resources :users
+  resources :consumers
 end

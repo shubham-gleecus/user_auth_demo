@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  unauthorized: 'You are not authorized to access that page'
   date:
     formats:
       default: "%d/%m/%Y"

@@ -1,0 +1,51 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+      -#  %h1 Consumer Users
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item.active Consumer Users
+%section.content
+  .container-fluid
+    -#.create-section.mb-2
+    -#  = link_to 'New Consumer', new_consumer_path, class: 'btn btn-primary'
+    .card
+      .card-header
+        %h3.card-title Consumer Users
+        .card-tools
+          - if can? :manage, User
+            = link_to new_consumer_path,
+                         'data-toggle': 'tooltip', 'data-placement': 'top', class: 'btn btn-sm btn-info' do
+              %i.fas.fa-plus-circle
+              New Consumer
+      / /.card-header
+      .card-body.p-0
+        %table#consumers-table.table.table-striped
+          %thead
+            %tr
+              %th Name
+              %th Email
+
+              -#%th{:style => "width: 40px"} Phone Number
+              %th.actions Action
+          %tbody
+            - unless @error_response
+              -if @consumers.empty?
+                %tr
+                  %td{colspan: 6} No Consumer found
+              - else
+                - @consumers.each do |consumer|
+                  %tr
+                    %td
+                      = link_to consumer.full_name, consumer_path(consumer.id)
+                    %td
+                      = consumer.email
+                    %td.actions
+                      = link_to consumer_path(consumer.id), title: 'Show' do
+                        %i.far.fa-eye
+                      - unless current_user.eql? consumer
+                        = link_to consumer_path(consumer.id), method: :delete, remote:true, class: 'remote-form',  title: 'Delete' do
+                          %i.far.fa-trash-alt

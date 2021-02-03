@@ -1,0 +1,51 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+      -#  %h1 Super Admin Users
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item.active Super Admin Users
+%section.content
+  .container-fluid
+    -#.create-section.mb-2
+    -#  = link_to 'New Super Admin', new_super_admin_path, class: 'btn btn-primary'
+    .card
+      .card-header
+        %h3.card-title Super Admin Users
+        .card-tools
+          - if current_user.superadmin_role?
+            = link_to new_super_admin_path,
+                         'data-toggle': 'tooltip', 'data-placement': 'top', class: 'btn btn-sm btn-info' do
+              %i.fas.fa-plus-circle
+              New Super Admin
+      / /.card-header
+      .card-body.p-0
+        %table#super_admins-table.table.table-striped
+          %thead
+            %tr
+              %th Name
+              %th Email
+
+              -#%th{:style => "width: 40px"} Phone Number
+              %th.actions Action
+          %tbody
+            - unless @error_response
+              -if @super_admins.empty?
+                %tr
+                  %td{colspan: 6} No Super Admin found
+              - else
+                - @super_admins.each do |super_admin|
+                  %tr
+                    %td
+                      = link_to super_admin.full_name, super_admin_path(super_admin.id)
+                    %td
+                      = super_admin.email
+                    %td.actions
+                      = link_to super_admin_path(super_admin.id), title: 'Show' do
+                        %i.far.fa-eye
+                      - unless current_user.eql? super_admin
+                        = link_to super_admin_path(super_admin.id), method: :delete, remote:true, class: 'remote-form',  title: 'Delete' do
+                          %i.far.fa-trash-alt

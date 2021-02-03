@@ -18,17 +18,25 @@ module UserRoleConcern
     superadmin_role?
   end
 
+  def admin?
+    admin_role?
+  end
+
   def supervisor?
     supervisor_role?
   end
 
   # user can access admin panel who has role admin|super_admin
   def can_access_supervisor_listing?
-    supervisor? || super_admin?
+    supervisor? || super_admin? || admin?
   end
 
   # user can access admin listing who has role super_admin
   def can_access_admin_listing?
+    super_admin? || admin?
+  end
+
+  def can_access_super_admin_listing?
     super_admin?
   end
   # ==> Private Methods  ----------------------------------------------------

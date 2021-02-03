@@ -11,11 +11,11 @@
     .row.mb-2
       %h3
         Dashboard content
-.container
-  - if current_user.superadmin_role? || current_user.supervisor_role?
-    %h3 Visible only for superadmins and supervisors!
-  - if can? :manage, User
-    %h3 Visible only for superadmins and supervisors!
+-#.container
+-#  - if current_user.superadmin_role? || current_user.supervisor_role?
+-#    %h3 Visible only for superadmins and supervisors!
+-#  - if can? :manage, User
+-#    %h3 Visible only for superadmins and supervisors!
 
 
   -#%h3 This is Home Page

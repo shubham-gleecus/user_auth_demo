@@ -18,6 +18,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
+gem 'devise-async'
 gem 'haml-rails'
 gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
@@ -40,6 +41,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'redis-rails' # to store session data into Redis
 # This gem allows you to use SweetAlert or SweetAlert2 for your flash messages.
 gem 'sweetify'
+gem 'letter_opener'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

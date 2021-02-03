@@ -1,0 +1,53 @@
+%section.content-header
+  .container-fluid
+    .row.mb-2
+      .col-sm-6
+        %h1
+          = @consumer.full_name
+      .col-sm-6
+        %ol.breadcrumb.float-sm-right
+          %li.breadcrumb-item
+            %a{:href => "/"} Home
+          %li.breadcrumb-item
+            %a{:href => "/consumers"} Consumer Users
+          %li.breadcrumb-item.active
+            = params[:id]
+%section.content
+  .container-fluid
+    .card
+      .card-header
+        %h3.card-title
+          = "#{@consumer.full_name} Details"
+      .card-body
+        .row
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Name
+              %dd
+                = @consumer.full_name || '--'
+              %br
+              %dt Member Since
+              %dd
+                = time_stamp_at(@consumer.created_at) || '--'
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Email
+              %dd
+                = @consumer.email || '--'
+              %br
+        %hr
+        .row
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Created At
+              %dd
+                = time_stamp_at(@consumer.created_at, :tmstp_at) || '--'
+              %br
+
+          .col-md-4
+            %dl.dl-horizontal
+              %dt Updated At
+              %dd
+                = time_stamp_at(@consumer.updated_at, :tmstp_at) || '--'
+              %br
+

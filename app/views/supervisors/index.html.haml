@@ -16,7 +16,7 @@
       .card-header
         %h3.card-title Supervisor Users
         .card-tools
-          - if current_user.superadmin_role?
+          - if current_user.superadmin_role? || current_user.admin_role?
             = link_to new_supervisor_path,
                          'data-toggle': 'tooltip', 'data-placement': 'top', class: 'btn btn-sm btn-info' do
               %i.fas.fa-plus-circle

@@ -2,9 +2,9 @@
   %aside.main-sidebar.sidebar-light-info.elevation-4
     / Brand Logo
     %a.brand-link.navbar-info{href: "/"}
-      %img.brand-image.img-circle.elevation-3{ alt: "StuzeeAdmin",
+      %img.brand-image.img-circle.elevation-3{ alt: "",
                                                style: "opacity: .8" }
-        %span.brand-text.font-weight-light User Auth
+        %span.brand-text.font-weight-light User Auth Demo
       / Sidebar
     .sidebar
       / Sidebar user (optional)
@@ -26,16 +26,28 @@
                 Dashboard
           - if current_user.superadmin_role?
             %li.nav-item
+              %a.nav-link{href: super_admins_path, class: is_active_link?(super_admins_path, :inclusive) ? 'active' : ''}
+                %i.fas.fa-building
+                %p
+                  Super Admin Users
+          - if current_user.superadmin_role? || current_user.admin_role?
+            %li.nav-item
               %a.nav-link{href: admins_path, class: is_active_link?(admins_path, :inclusive) ? 'active' : ''}
                 %i.fas.fa-building
                 %p
                   Admin Users
-          - if current_user.superadmin_role? || current_user.supervisor_role?
+          - if can? :manage, User
             %li.nav-item
               %a.nav-link{href: supervisors_path, class: is_active_link?(supervisors_path, :inclusive) ? 'active' : ''}
                 %i.fas.fa-building
                 %p
                   Supervisor Users
+          - if can? :manage, User
+            %li.nav-item
+              %a.nav-link{href: consumers_path, class: is_active_link?(consumers_path, :inclusive) ? 'active' : ''}
+                %i.fas.fa-building
+                %p
+                  Consumers
 
           -#%li.nav-item.has-treeview
           -#  %a.nav-link{href: "/discussions", class: active_class('/discussions')}
